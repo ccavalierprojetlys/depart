@@ -192,7 +192,7 @@
         //    selectedData = this.value;
             selectedData = 7;
 
-            quantile = d3.scaleQuantile
+            quantile = d3.scaleQuantile()
                 .domain([0, d3.max(csv, e => +e.POP)])
                 .range(d3.range(9));
 
