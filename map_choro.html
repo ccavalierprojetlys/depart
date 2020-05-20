@@ -185,22 +185,23 @@
                         .style("left", "-500px")
                         .style("top", "-500px");
                 });
+            //
+            d3.select("#selectcolonne").on("change", function () {
+                selectedData = this.value;
+                selectedData = 7;
+                quantile = d3.scale.scaleQuantile
+                    .domain([0, d3.max(csv, e => +e[selectedData])])
+                    .range(d3.range(9));
+
+                legendScale.domain([0, d3.max(csv, e => +e[selectedData])]);
+                legendAxis.call(d3.axisRight(legendScale).ticks(6));
+
+                csv.forEach(function (e, i) {
+                    d3.select("#d" + e.CODE_DEPT)
+                        .attr("class", d => "department q" + quantile(+e[selectedData]) + "-9");
+                });
         });
-        //
-        d3.select("#selectcolonne").on("change", function () {
-            selectedData = this.value;
-            selectedData = 7;
-            quantile = d3.scale.scaleQuantile
-                .domain([0, d3.max(csv, e => +e[selectedData])])
-                .range(d3.range(9));
-
-            legendScale.domain([0, d3.max(csv, e => +e[selectedData])]);
-            legendAxis.call(d3.axisRight(legendScale).ticks(6));
-
-            csv.forEach(function (e, i) {
-                d3.select("#d" + e.CODE_DEPT)
-                    .attr("class", d => "department q" + quantile(+e[selectedData]) + "-9");
-            });
+        
     });
 	
     // Refresh colors on combo selection
