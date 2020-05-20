@@ -189,8 +189,10 @@
 
         //
         d3.select("#selectcolonne").on("change", function () {
-            selectedData = this.value;
+        //    selectedData = this.value;
             selectedData = 7;
+
+
             quantile = d3.scale.scaleQuantile
                 .domain([0, d3.max(csv, e => +e.POP)])
                 .range(d3.range(9));
