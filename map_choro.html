@@ -79,13 +79,10 @@
                     <div>
                         <label for="male">Colonne</label>
                         <select id="selectcolonne">
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8" selected="selected">8</option>
+                            <option value="NB_ARRONDS">NB_ARRONDS</option>
+                            <option value="NB_CANTONS">NB_CANTONS</option>
+                            <option value="NB_COMMUNES">NB_COMMUNES</option>
+                            <option value="POP" selected="selected">POP</option>
                         </select>
                     </div>
                 </fieldset>
@@ -189,8 +186,8 @@
 
         //
         d3.select("#selectcolonne").on("change", function () {
-        //    selectedData = this.value;
-            selectedData = "POP";
+            selectedData = this.value;
+         //   selectedData = "POP";
 
             quantile = d3.scaleQuantile()
                 .domain([0, d3.max(csv, e => +e[selectedData])])
