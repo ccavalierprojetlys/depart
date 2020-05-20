@@ -190,10 +190,10 @@
         //
         d3.select("#selectcolonne").on("change", function () {
         //    selectedData = this.value;
-            selectedData = 7;
+            selectedData = "POP";
 
             quantile = d3.scaleQuantile()
-                .domain([0, d3.max(csv, e => +e.POP)])
+                .domain([0, d3.max(csv, e => +e.[selectedData])])
                 .range(d3.range(9));
 
             legendScale.domain([0, d3.max(csv, e => +e[selectedData])]);
