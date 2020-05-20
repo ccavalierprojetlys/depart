@@ -193,7 +193,7 @@
             selectedData = "POP";
 
             quantile = d3.scaleQuantile()
-                .domain([0, d3.max(csv, e => +e.[selectedData])])
+                .domain([0, d3.max(csv, e => +e[selectedData])])
                 .range(d3.range(9));
 
             legendScale.domain([0, d3.max(csv, e => +e[selectedData])]);
