@@ -55,7 +55,7 @@
 				<fieldset>
 					<div>
 						<label for="male">Jeu de couleurs</label>
-						<select>
+						<select id="selectcolor">
 							<option value="YlGn">Jaune-Vert</option>
 							<option value="YlGnBu">Jaune-Vert-Bleu</option>
 							<option value="GnBu">Vert-Bleu</option>
@@ -177,7 +177,7 @@
     });
 	
     // Refresh colors on combo selection
-    d3.select("select").on("change", function () {
+    d3.select("#selectcolor").on("change", function () {
         d3.selectAll("svg").attr("class", this.value);
     });
 
