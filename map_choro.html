@@ -198,11 +198,12 @@
         .attr("class", "tooltip")
         .style("opacity", 0);	// Append a DIV for the tooltip
 
+    //
     d3.select("#selectcolonne").on("change", function () {
         selectedData = this.value;
 
         quantile = d3.scale.scaleQuantile
-            .domain([0, d3.max(csv, e => +e[selectedData])])
+            .domain([0, d3.max(csv, e => +e[7])])
             .range(d3.range(9));
 
         legendScale.domain([0, d3.max(csv, e => +e[selectedData])]);
