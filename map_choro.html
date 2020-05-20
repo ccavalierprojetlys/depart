@@ -183,29 +183,29 @@
                         .style("top", "-500px");
                 });
         });
-
-        //
-        d3.select("#selectcolonne").on("change", function () {
-            selectedData = this.value;
-         //   selectedData = "POP";
-
-            quantile = d3.scaleQuantile()
-                .domain([0, d3.max(csv, e => +e[selectedData])])
-                .range(d3.range(9));
-
-            legendScale.domain([0, d3.max(csv, e => +e[selectedData])]);
-            legendAxis.call(d3.axisRight(legendScale).ticks(6));
-
-            csv.forEach(function (e, i) {
-                d3.select("#d" + e.CODE_DEPT)
-                    .attr("class", d => "department q" + quantile(+e[selectedData]) + "-9");
-            });
     });
 	
     // Refresh colors on combo selection
     d3.select("#selectcolor").on("change", function () {
         d3.selectAll("svg").attr("class", this.value);
     });
+
+    //
+    d3.select("#selectcolonne").on("change", function () {
+        selectedData = this.value;
+        //   selectedData = "POP";
+
+        quantile = d3.scaleQuantile()
+            .domain([0, d3.max(csv, e => +e[selectedData])])
+            .range(d3.range(9));
+
+        legendScale.domain([0, d3.max(csv, e => +e[selectedData])]);
+        legendAxis.call(d3.axisRight(legendScale).ticks(6));
+
+        csv.forEach(function (e, i) {
+            d3.select("#d" + e.CODE_DEPT)
+                .attr("class", d => "department q" + quantile(+e[selectedData]) + "-9");
+        });
 
     // Append a DIV for the tooltip
     var div = d3.select("body").append("div")
